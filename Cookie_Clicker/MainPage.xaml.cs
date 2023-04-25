@@ -1,17 +1,23 @@
-﻿namespace Cookie_Clicker;
+﻿global using Cookie_Clicker;
+namespace Cookie_Clicker;
 
 public partial class MainPage : ContentPage
 {
-	float count = 0f;
-
+    float count = 0f;
 	public MainPage()
 	{
-		InitializeComponent();
-		string txtNames = File.ReadAllText("txt/randomNames.txt");
-        string txtNames2 = File.ReadAllText("txt/randomNames2.txt");
-		string[] Names = txtNames.Split(";");
-        string[] Names2 = txtNames.Split(";");
-
+        InitializeComponent();
+        string txtNames = File.ReadAllText("randomNames.txt");
+        string txtNames2 = File.ReadAllText("randomNames2.txt");
+        string[] Names = txtNames.Split(";");
+        string[] Names2 = txtNames2.Split(";");
+        Random ramdon = new Random();
+        int randomNames = ramdon.Next(0, 2);
+        int randomIndex = ramdon.Next(0, 50);
+        if (randomNames == 0)
+            nameOfBakery.Text = $"{Names[randomIndex]}'s bakery";
+        else
+            nameOfBakery.Text = $"{Names2[randomIndex]}'s bakery";
     }
 
 	private void btnC_Clicked(object sender, EventArgs e)
@@ -36,7 +42,8 @@ public partial class MainPage : ContentPage
     }
     private async void btnChangeName_Clicked(object sender, EventArgs e)
     {
-            string change = await DisplayPromptAsync("Change name of your bakery", "Your name: ");
+
+        string change = await DisplayPromptAsync("Change name of your bakery", "Your name: ");
             nameOfBakery.Text = $"{change}'s bakery";
     }
 }
