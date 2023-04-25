@@ -7,8 +7,12 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
+		string txtNames = File.ReadAllText("txt/randomNames.txt");
+        string txtNames2 = File.ReadAllText("txt/randomNames2.txt");
+		string[] Names = txtNames.Split(";");
+        string[] Names2 = txtNames.Split(";");
 
-	}
+    }
 
 	private void btnC_Clicked(object sender, EventArgs e)
 	{
@@ -17,18 +21,11 @@ public partial class MainPage : ContentPage
 			totalCs.Text = $"{count} cookie";
 		else
 			totalCs.Text = $"{count} cookies";
-		
-		//if (count == 1)
-		//	perSecCs.Text = $"{count / 100} cookie per second";
-		//else
-		//	perSecCs.Text = $"{count / 100} cookies per second";
 
 		SemanticScreenReader.Announce(perSecCs.Text);
-		//SemanticScreenReader.Announce(btnC.Text);
 	}
     private async void btnStats_Clicked(object sender, EventArgs e)
     {
-        //DisplayAlert($"Total cookies: {totalCs}", "OK");
         string action = await DisplayActionSheet("Stats", "Back", null, $"Total cookies: {totalCs.Text}",$"Total clicked cookies: {count.ToString()} cookies", $"Total clicks: {Convert.ToString(count)}", "Runtime: ");
 
     }
@@ -39,8 +36,8 @@ public partial class MainPage : ContentPage
     }
     private async void btnChangeName_Clicked(object sender, EventArgs e)
     {
-		string change = await DisplayPromptAsync("Change name of your bakery","Your name: ");
-		nameOfBakery.Text =$"{change}'s bakery";
+            string change = await DisplayPromptAsync("Change name of your bakery", "Your name: ");
+            nameOfBakery.Text = $"{change}'s bakery";
     }
 }
 
