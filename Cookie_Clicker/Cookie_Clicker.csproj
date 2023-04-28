@@ -48,12 +48,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Content Include="Resources\Raw\txt\randomNames.txt">
+	  <Content Include="txt\randomNames.txt">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Content>
-	  <Content Include="Resources\Raw\txt\randomNames2.txt">
+	  <Content Include="txt\randomNames2.txt">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiAsset Include="txt\randomNames.txt" />
+	  <MauiAsset Include="txt\randomNames2.txt" />
 	</ItemGroup>
 
 	<ItemGroup>

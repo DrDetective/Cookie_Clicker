@@ -6,4 +6,9 @@ public partial class AppShell : Shell
 	{
 		InitializeComponent();
 	}
+
+    private void MenuFlyoutItem_Clicked(object sender, EventArgs e)
+    {
+
+    }
 }

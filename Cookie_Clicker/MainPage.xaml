@@ -8,13 +8,14 @@
             Spacing="25"
             Padding="30,0"
             VerticalOptions="Center">
-            <Label
-                x:Name="nameOfBakery"
+            <Button
+                x:Name="btnChangeName"
                 Text="'s bakery"
                 SemanticProperties.HeadingLevel="Level4"
                 FontSize="15"
                 HorizontalOptions="Center"
-                TextColor="Black"/>
+                TextColor="Black"
+                Clicked="btnChangeName_Clicked"/>
             <Label
                 x:Name="totalCs"
                 Text="0 cookies"
@@ -39,14 +40,6 @@
                 HeightRequest="360"
                 WidthRequest="360"/>
             <Button
-                x:Name="btnChangeName"
-                Text="Change name of your bakery"
-                TextColor="Black"
-                BorderColor="Black"
-                HorizontalOptions="Start"
-                VerticalOptions="Start"
-                Clicked="btnChangeName_Clicked"/>
-            <Button
                 x:Name="btnStats"
                 Text="Statistiky o hře"
                 TextColor="Black"
@@ -55,6 +48,22 @@
                 VerticalOptions="Start"
                 Clicked="btnStats_Clicked"/>
             <Button
+                x:Name="btnSave"
+                Text="Save"
+                TextColor="Black"
+                BorderColor="Black"
+                HorizontalOptions="Start"  
+                VerticalOptions="Start"
+                Clicked="btnSave_Clicked"/>
+            <Button
+                x:Name="btnLoad"
+                Text="Load"
+                TextColor="Black"
+                BorderColor="Black"
+                HorizontalOptions="Start"  
+                VerticalOptions="Start"
+                Clicked="btnLoad_Clicked"/>
+            <Button
                 x:Name="btnInfo"
                 Text="Info"
                 TextColor="Black"
@@ -62,7 +71,17 @@
                 HorizontalOptions="Start"  
                 VerticalOptions="Start"
                 Clicked="btnInfo_Clicked"/>
+
+            <Grid>
+
+            </Grid>
+            <HorizontalStackLayout>
+                <Label
+                Text="Ver 1.2.1"
+                TextColor="Black"
+                TextTransform="Lowercase"
+                />
+            </HorizontalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>

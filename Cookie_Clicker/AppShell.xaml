@@ -10,4 +10,7 @@
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+    <MenuFlyoutItem
+        Text="Stats"
+        Clicked="MenuFlyoutItem_Clicked" />
 </Shell>
