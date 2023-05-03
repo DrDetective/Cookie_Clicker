@@ -1,3 +1,3 @@
 # Cookie_Clicker
-Ver 1.2.2   
-Coded in 10h
+Ver 1.2.3   
+Coded in 11h
