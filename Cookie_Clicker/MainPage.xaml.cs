@@ -8,8 +8,8 @@ public partial class MainPage : ContentPage
 	{
         InitializeComponent();
         #region
-        string txtNames = File.ReadAllText("C:/Users/Stepan/source/repos/Cookie_Clicker/Cookie_Clicker/txt/randomNames.txt");
-        string txtNames2 = File.ReadAllText("C:/Users/Stepan/source/repos/Cookie_Clicker/Cookie_Clicker/txt/randomNames2.txt");
+        string txtNames = File.ReadAllText("/txt/randomNames.txt");
+        string txtNames2 = File.ReadAllText("/txt/randomNames2.txt");
         string[] Names = txtNames.Split(";");
         string[] Names2 = txtNames2.Split(";");
         Random ramdon = new Random();
