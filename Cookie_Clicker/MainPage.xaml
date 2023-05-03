@@ -71,7 +71,12 @@
                 HorizontalOptions="Start"  
                 VerticalOptions="Start"
                 Clicked="btnInfo_Clicked"/>
-
+            <Switch
+                x:Name="swchModes"
+                Scale="2"
+                HorizontalOptions="Center"
+                Background="Black"
+                />
             <Grid>
 
             </Grid>
