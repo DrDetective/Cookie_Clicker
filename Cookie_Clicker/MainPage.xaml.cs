@@ -27,6 +27,7 @@ public partial class MainPage : ContentPage
         
         }
     }
+
     private void btnC_Clicked(object sender, EventArgs e) //COOKIE BUTTON
 	{
 		count++;
