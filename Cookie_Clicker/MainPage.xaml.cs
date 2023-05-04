@@ -7,9 +7,8 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
         InitializeComponent();
-        #region
-        string txtNames = File.ReadAllText("/txt/randomNames.txt");
-        string txtNames2 = File.ReadAllText("/txt/randomNames2.txt");
+        string txtNames = File.ReadAllText("randomNames.txt");
+        string txtNames2 = File.ReadAllText("randomNames2.txt");
         string[] Names = txtNames.Split(";");
         string[] Names2 = txtNames2.Split(";");
         Random ramdon = new Random();
@@ -19,8 +18,6 @@ public partial class MainPage : ContentPage
             btnChangeName.Text = $"{Names[randomIndex]}'s bakery";
         else
             btnChangeName.Text = $"{Names2[randomIndex]}'s bakery";
-        #endregion //RANDOM NAMES FOR BAKERY
-
         if (swchModes.IsToggled) //DEFAULT IS WHITE MODE    
         {
 
@@ -30,8 +27,7 @@ public partial class MainPage : ContentPage
         
         }
     }
-
-	private void btnC_Clicked(object sender, EventArgs e) //COOKIE BUTTON
+    private void btnC_Clicked(object sender, EventArgs e) //COOKIE BUTTON
 	{
 		count++;
 		if (count == 1)
@@ -44,7 +40,6 @@ public partial class MainPage : ContentPage
     private async void btnStats_Clicked(object sender, EventArgs e) //STATS OF GAME
     {
         string action = await DisplayActionSheet("Stats", "Back", null, $"Cookies in bank: {totalCs.Text}",$"Total clicked cookies: {count.ToString()} cookies", $"Total clicks: {Convert.ToString(count)}", "Runtime: ");
-
     }
 
     private void btnInfo_Clicked(object sender, EventArgs e) //INFO ABOUT THE GAME
