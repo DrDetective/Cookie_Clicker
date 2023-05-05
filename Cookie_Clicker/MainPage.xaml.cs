@@ -1,26 +1,50 @@
 ﻿global using Cookie_Clicker;
+using System.IO;
+
 namespace Cookie_Clicker;
 
 public partial class MainPage : ContentPage
 {
     float count = 0f;
-	public MainPage()
+    string[] nacteneFormy;
+    string[] nacteneTypy;
+    private async void NactiData(bool prvni)
+    {
+        Stream txtNames;
+        if (prvni)
+        {
+            txtNames = await FileSystem.OpenAppPackageFileAsync("randomNames.txt");
+        }
+        else
+        {
+            txtNames = await FileSystem.OpenAppPackageFileAsync("randomNames2.txt");
+        }
+        StreamReader reader = new StreamReader(txtNames);
+        string text = reader.ReadToEnd();
+        string[] rozdeleny = text.Split(";");
+        if (prvni)
+        {
+            nacteneFormy = rozdeleny;
+        }
+        else
+        {
+            nacteneTypy = rozdeleny;
+        }
+    }
+
+    public MainPage()
 	{
         InitializeComponent();
         sqlite_stuff sqlite = new sqlite_stuff();
-        string txtNames = File.ReadAllText("randomNames.txt");
-        string txtNames2 = File.ReadAllText("randomNames2.txt");
-        string[] Names = txtNames.Split(";");
-        string[] Names2 = txtNames2.Split(";");
         Random ramdon = new Random();
         int randomNames = ramdon.Next(0, 2);
         int randomIndex = ramdon.Next(0, 50);
         if (randomNames == 0)
-            btnChangeName.Text = $"{Names[randomIndex]}'s bakery";
-            sqlite.Name = $"{btnChangeName.Text}'s bakery";
-            
+            btnChangeName.Text = $"{nacteneFormy[randomIndex]}'s bakery";
+        //sqlite.Name = $"{btnChangeName.Text}'s bakery";
+
         else
-            btnChangeName.Text = $"{Names2[randomIndex]}'s bakery";
+            btnChangeName.Text = $"{nacteneTypy[randomIndex]}'s bakery";
 
         if (swchModes.IsToggled) //DEFAULT IS WHITE MODE    
         {
@@ -28,13 +52,13 @@ public partial class MainPage : ContentPage
         }
         else //DARK MODE
         {
-        
+
         }
     }
 
     private void btnC_Clicked(object sender, EventArgs e) //COOKIE BUTTON
 	{
-		count++;
+        count++;
 		if (count == 1)
 			totalCs.Text = $"{count} cookie";
 		else
