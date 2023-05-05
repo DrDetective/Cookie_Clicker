@@ -6,8 +6,9 @@ namespace Cookie_Clicker;
 public partial class MainPage : ContentPage
 {
     float count = 0f;
-    string[] nacteneFormy;
-    string[] nacteneTypy;
+    string[] nacteneFormy = Array.Empty<string>();
+    string[] nacteneTypy = Array.Empty<string>();
+
     private async void NactiData(bool prvni)
     {
         Stream txtNames;
@@ -31,18 +32,15 @@ public partial class MainPage : ContentPage
             nacteneTypy = rozdeleny;
         }
     }
-
     public MainPage()
 	{
         InitializeComponent();
-        sqlite_stuff sqlite = new sqlite_stuff();
+        NactiData(true);
         Random ramdon = new Random();
         int randomNames = ramdon.Next(0, 2);
-        int randomIndex = ramdon.Next(0, 50);
+        int randomIndex = ramdon.Next(0,nacteneFormy.Length);
         if (randomNames == 0)
             btnChangeName.Text = $"{nacteneFormy[randomIndex]}'s bakery";
-        //sqlite.Name = $"{btnChangeName.Text}'s bakery";
-
         else
             btnChangeName.Text = $"{nacteneTypy[randomIndex]}'s bakery";
 
@@ -63,7 +61,6 @@ public partial class MainPage : ContentPage
 			totalCs.Text = $"{count} cookie";
 		else
 			totalCs.Text = $"{count} cookies";
-
 		SemanticScreenReader.Announce(perSecCs.Text);
 	}
     private async void btnStats_Clicked(object sender, EventArgs e) //STATS OF GAME
