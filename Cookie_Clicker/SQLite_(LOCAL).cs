@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿using Microsoft.Maui.Controls;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,11 @@ namespace Cookie_Clicker
 { 
     internal class SQLite__LOCAL_
     {
-        [PrimaryKey, AutoIncrement]
-        public string Name { get; set; }
-        public int 
+        static string DBpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"{}.db");
+        SQLiteConnection db = new SQLiteConnection(DBpath);
+        public void DatabaseConfig()
+        {
+            db.CreateTable<sqlite_stuff>();
+        }
     }
 }

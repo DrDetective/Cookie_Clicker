@@ -8,5 +8,9 @@ namespace Cookie_Clicker
 {
     internal class sqlite_stuff
     {
+        [PrimaryKey, AutoIncrement]
+        public string Name { get; set; }
+        public int Bank { get; set; }
+
     }
 }
