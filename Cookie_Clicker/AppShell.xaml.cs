@@ -1,4 +1,5 @@
-﻿namespace Cookie_Clicker;
+﻿global using Cookie_Clicker;
+namespace Cookie_Clicker;
 
 public partial class AppShell : Shell
 {
@@ -7,7 +8,7 @@ public partial class AppShell : Shell
 		InitializeComponent();
 	}
 
-    private void MenuFlyoutItem_Clicked(object sender, EventArgs e)
+    private async void MenuFlyoutItem_Clicked(object sender, EventArgs e)
     {
 
     }

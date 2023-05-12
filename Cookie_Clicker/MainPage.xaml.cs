@@ -11,6 +11,8 @@ public partial class MainPage : ContentPage
 
     private async void NactiData(bool prvni)
     {
+        Random ramdon = new Random();
+        int randomNames = ramdon.Next(0, 2);
         Stream txtNames;
         if (prvni)
         {
@@ -31,19 +33,16 @@ public partial class MainPage : ContentPage
         {
             nacteneTypy = rozdeleny;
         }
-    }
-    public MainPage()
-	{
-        InitializeComponent();
-        NactiData(true);
-        Random ramdon = new Random();
-        int randomNames = ramdon.Next(0, 2);
-        int randomIndex = ramdon.Next(0,nacteneFormy.Length);
+        int randomIndex = ramdon.Next(0, nacteneFormy.Length);
+        NactiData(false);
         if (randomNames == 0)
             btnChangeName.Text = $"{nacteneFormy[randomIndex]}'s bakery";
         else
             btnChangeName.Text = $"{nacteneTypy[randomIndex]}'s bakery";
-
+    }
+    public MainPage()
+	{
+        InitializeComponent();
         if (swchModes.IsToggled) //DEFAULT IS WHITE MODE    
         {
 
@@ -65,7 +64,7 @@ public partial class MainPage : ContentPage
 	}
     private async void btnStats_Clicked(object sender, EventArgs e) //STATS OF GAME
     {
-        string action = await DisplayActionSheet("Stats", "Back", null, $"Cookies in bank: {totalCs.Text}",$"Total clicked cookies: {count.ToString()} cookies", $"Total clicks: {Convert.ToString(count)}", "Runtime: ");
+        string statsString = await DisplayActionSheet("Stats", "Back", null, $"Cookies in bank: {totalCs.Text}",$"Total clicked cookies: {count.ToString()} cookies", $"Total clicks: {Convert.ToString(count)}", "Runtime: ");
     }
 
     private void btnInfo_Clicked(object sender, EventArgs e) //INFO ABOUT THE GAME
